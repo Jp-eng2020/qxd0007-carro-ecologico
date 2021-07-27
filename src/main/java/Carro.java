@@ -2,10 +2,10 @@ import jdk.internal.jshell.tool.StopDetectingInputStream;
 import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
 
 public class Carro {
-   public int passageiros= 0;
-   public int combustivel = 0;
-   public int quilometragem = 0;
-    public int getPassageiros() {
+   private int passageiros= 0;
+   private int combustivel = 0;
+   private int quilometragem = 0;
+     int getPassageiros() {
       
         return passageiros;
     }
@@ -60,14 +60,20 @@ public class Carro {
                 combustivel = 0;
                 return false;
             }
-
+           
+            
             if (distancia<combustivel) {
                 
                 quilometragem += distancia;
                 combustivel = combustivel - distancia;
                 distancia = 0;
                 return true;
+            }else{
+
+                quilometragem += distancia - 21;
             }
+           
+            
 
 
         }
@@ -88,7 +94,10 @@ public class Carro {
             combustivel = 100;
             return true;
         }else{
-            combustivel += quantidade;
+          combustivel += quantidade; 
+          if (combustivel > 100) {
+              combustivel = 100;
+          }
             return true;
         }
        
